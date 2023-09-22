@@ -1,0 +1,5 @@
+#!/bin/bash
+
+apt build-dep -y ./
+
+debuild -uc -us -b
