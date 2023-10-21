@@ -3,3 +3,6 @@
 apt build-dep -y ./
 
 debuild -uc -us -b
+
+# copy deb files
+cp ../*deb ./

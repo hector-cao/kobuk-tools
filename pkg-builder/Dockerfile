@@ -10,6 +10,9 @@ RUN apt update && apt install --no-install-recommends --yes build-essential \
         fakeroot devscripts wget git equivs liblz4-tool sudo \
         unzip curl xz-utils cpio rpm2cpio gawk
 
+# add kobuk PPA for build-time dependencies
+RUN add-apt-repository -y ppa:kobuk-team/tdx
+
 COPY scripts/ /scripts/
 RUN chmod 0755 /scripts/*
 
