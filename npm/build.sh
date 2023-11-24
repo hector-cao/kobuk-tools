@@ -11,7 +11,7 @@ fi
 if [ "$1" = "-i" ]; then
     # in interactive mode, the LANG=C fakeroot debian/rules binary-generic command fails
     # error : stdout is a console, aborting
-    docker run --network=none -v ${PWD}:/src  -it --entrypoint="" mantic-pkg-build bash
+    docker run -v ${PWD}:/src  -it --entrypoint="" mantic-pkg-build bash
 
 		# inside the shell, to rebuild the kernel, we can use
 		#debuild -us -uc -b
