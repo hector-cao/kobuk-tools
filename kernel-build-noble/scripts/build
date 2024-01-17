@@ -1,0 +1,32 @@
+#!/bin/bash
+
+# 
+# build kernel for mantic
+#
+
+set -ex
+
+apt update
+DEBIAN_FRONTEND=noninteractive TZ=Europe/Paris apt install tzdata -y
+
+# copy source code
+rm -rf /src-build
+cp -rf /src/ /src-build
+cd /src-build/
+
+# this step is important, it generates debian/control file
+LANG=C fakeroot debian/rules clean
+
+apt build-dep -y ./
+#mk-build-deps --install --build-dep --build-indep '--tool=apt-get --no-install-recommends -y' debian/control
+
+# debuild is much faster ! so use debuild by default instead of debian/rules
+# -d : do not check for dependencies that can make the build fail be cause
+# of unstable features of mantic
+debuild -uc -us -b -d
+
+# To recompile kernel binary
+# LANG=C fakeroot debian/rules binary-perarch
+
+# gathers debian files
+cp ../*deb /src/
