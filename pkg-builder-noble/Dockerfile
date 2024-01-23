@@ -8,7 +8,7 @@ RUN apt update && apt install --no-install-recommends --yes software-properties-
 
 RUN apt update && apt install --no-install-recommends --yes build-essential \
         fakeroot devscripts wget git equivs liblz4-tool sudo \
-        unzip curl xz-utils cpio rpm2cpio gawk
+        unzip curl xz-utils cpio rpm2cpio gawk lintian
 
 # add kobuk PPA for build-time dependencies
 RUN add-apt-repository -y ppa:kobuk-team/tdx
