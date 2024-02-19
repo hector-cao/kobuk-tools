@@ -4,14 +4,23 @@ set -e
 
 LINUX_SGX_URL=https://github.com/intel/linux-sgx.git
 LINUX_SGX_BRANCH=canonical_packaging_dev
-SGX_VERSION=2.22
+SGX_VERSION=2.23
 
 SGX_SRC_FOLDER_NAME=linux-sgx-${SGX_VERSION}
 SGX_SRC_ARCHIVE_NAME=linux-sgx_${SGX_VERSION}.orig.tar.gz
 
 prepare_source() {
 		git clone -b canonical_packaging_dev --recursive $LINUX_SGX_URL $SGX_SRC_FOLDER_NAME
-		(cd ./$SGX_SRC_FOLDER_NAME && make preparation)
+
+		# skip prebuilt download
+		cd $SGX_SRC_FOLDER_NAME
+		cp Makefile Makefile.bk
+		sed -i '/^.*download_prebuilt.*/d' Makefile
+		make preparation
+		mv Makefile.bk Makefile
+		cd -
+
+		# create archive
 		tar --exclude-vcs -zcvf $SGX_SRC_ARCHIVE_NAME $SGX_SRC_FOLDER_NAME
 }
 
