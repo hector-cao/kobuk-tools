@@ -7,7 +7,7 @@ ARG DEBIAN_FRONTEND=noninteractive
 RUN apt update && apt install --no-install-recommends --yes software-properties-common
 
 RUN apt update && apt install --no-install-recommends --yes build-essential \
-        fakeroot devscripts wget git equivs liblz4-tool sudo \
+        fakeroot devscripts wget equivs liblz4-tool sudo \
         unzip curl xz-utils cpio rpm2cpio gawk lintian
 
 # add editors

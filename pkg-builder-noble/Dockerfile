@@ -7,8 +7,11 @@ ARG DEBIAN_FRONTEND=noninteractive
 RUN apt update && apt install --no-install-recommends --yes software-properties-common
 
 RUN apt update && apt install --no-install-recommends --yes build-essential \
-        fakeroot devscripts wget git equivs liblz4-tool sudo \
+        fakeroot devscripts wget equivs liblz4-tool sudo \
         unzip curl xz-utils cpio rpm2cpio gawk lintian
+
+# remove git, svn, wget to make sure we do not fetch anything at build
+RUN apt remove -y git wget svn curl || true
 
 # add kobuk PPA for build-time dependencies
 RUN add-apt-repository -y ppa:kobuk-team/tdx
