@@ -1,0 +1,5 @@
+#!/bin/bash
+
+SCRIPT_DIR=$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" &>/dev/null && pwd)
+
+python3 -m pytest --junitxml=report.xml $SCRIPT_DIR/checkbox-provider-tdx/bin/test_*.py
