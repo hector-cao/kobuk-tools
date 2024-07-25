@@ -10,6 +10,12 @@ RUN apt update && apt install --no-install-recommends --yes build-essential \
         fakeroot devscripts wget equivs lz4 sudo \
         unzip curl xz-utils cpio rpm2cpio gawk lintian
 
+# autopkgtest
+RUN apt install  --no-install-recommends --yes autopkgtest
+
+# IDE
+RUN apt install  --no-install-recommends --yes emacs-nox
+
 # remove git, svn, wget to make sure we do not fetch anything at build
 RUN apt remove -y git wget svn curl || true
 
