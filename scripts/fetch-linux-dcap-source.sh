@@ -4,7 +4,7 @@ set -e
 
 LINUX_SGX_URL=https://github.com/intel/SGXDataCenterAttestationPrimitives.git
 LINUX_SGX_BRANCH=canonical_packaging_dev
-DCAP_VERSION=1.20
+DCAP_VERSION=1.21
 
 DCAP_SRC_FOLDER_NAME=sgx-dcap-${DCAP_VERSION}
 DCAP_SRC_ARCHIVE_NAME=sgx-dcap_${DCAP_VERSION}.orig.tar.gz
