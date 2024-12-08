@@ -11,7 +11,7 @@ RUN apt update && apt install --no-install-recommends --yes build-essential \
         unzip curl xz-utils cpio rpm2cpio gawk lintian
 
 # autopkgtest
-RUN apt install  --no-install-recommends --yes autopkgtest
+RUN apt install  --no-install-recommends --yes ubuntu-dev-tools autopkgtest
 
 # IDE
 RUN apt install  --no-install-recommends --yes emacs-nox
